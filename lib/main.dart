@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toolbox/model/NavigationItem.dart';
+import 'package:toolbox/page/PeoplePage.dart';
+import 'package:toolbox/provider/NavigationProvider.dart';
 import 'package:toolbox/widget/ButtonWidget.dart';
 import 'package:toolbox/widget/NavigationDrawerWidget.dart';
 
@@ -12,22 +16,52 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return ChangeNotifierProvider(
+      create: (context) {
+        return NavigationProvider();
+      },
+      child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            // This is the theme of your application.
+            //
+            // Try running your application with "flutter run". You'll see the
+            // application has a blue toolbar. Then, without quitting the app, try
+            // changing the primarySwatch below to Colors.green and then invoke
+            // "hot reload" (press "r" in the console where you ran "flutter run",
+            // or simply save your changes to "hot reload" in a Flutter IDE).
+            // Notice that the counter didn't reset back to zero; the application
+            // is not restarted.
+            primarySwatch: Colors.blue,
+          ),
+          //home: const MyHomePage(title: 'Flutter Demo Home Page'),
+          home: const MainPage()),
     );
+  }
+}
+
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  @override
+  Widget build(BuildContext context) => buildPage();
+
+  Widget buildPage() {
+    final NavigationProvider provider =
+        Provider.of<NavigationProvider>(context);
+    final NavigationItem navigationItem = provider.navigationItem;
+
+    switch (navigationItem) {
+      case NavigationItem.people:
+        return const PeoplePage();
+      default:
+        return const MyHomePage(title: 'Home');
+    }
   }
 }
 

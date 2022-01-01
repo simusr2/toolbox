@@ -5,5 +5,5 @@ enum NavigationItem {
   workflow,
   updates,
   plugins,
-  navigations,
+  notifications,
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toolbox/model/NavigationItem.dart';
 import 'package:toolbox/page/FavouritesPage.dart';
 import 'package:toolbox/page/PeoplePage.dart';
+import 'package:toolbox/provider/NavigationProvider.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   final paddding = const EdgeInsets.symmetric(horizontal: 20.0);
@@ -38,23 +41,31 @@ class NavigationDrawerWidget extends StatelessWidget {
                   buildSearchField(),
                   const SizedBox(height: 24),
                   buildMenuItem(
+                    context,
+                    navigationItem: NavigationItem.people,
                     text: 'People',
                     icon: Icons.people,
                     onClicked: () => selectedItem(context, 0),
                   ),
                   const SizedBox(height: smallSizedBoxHeight),
                   buildMenuItem(
+                    context,
+                    navigationItem: NavigationItem.favourites,
                     text: 'Favourites',
                     icon: Icons.favorite_border,
                     onClicked: () => selectedItem(context, 1),
                   ),
                   const SizedBox(height: smallSizedBoxHeight),
                   buildMenuItem(
+                    context,
+                    navigationItem: NavigationItem.workflow,
                     text: 'Workflow',
                     icon: Icons.workspaces_outline,
                   ),
                   const SizedBox(height: smallSizedBoxHeight),
                   buildMenuItem(
+                    context,
+                    navigationItem: NavigationItem.updates,
                     text: 'Updates',
                     icon: Icons.update,
                   ),
@@ -62,11 +73,15 @@ class NavigationDrawerWidget extends StatelessWidget {
                   const Divider(color: Colors.white70),
                   const SizedBox(height: dividerSizedBoxHeight),
                   buildMenuItem(
+                    context,
+                    navigationItem: NavigationItem.plugins,
                     text: 'Plugins',
                     icon: Icons.account_tree_outlined,
                   ),
                   const SizedBox(height: smallSizedBoxHeight),
                   buildMenuItem(
+                    context,
+                    navigationItem: NavigationItem.notifications,
                     text: 'Notifications',
                     icon: Icons.notifications_outlined,
                   ),
@@ -150,20 +165,48 @@ class NavigationDrawerWidget extends StatelessWidget {
     );
   }
 
-  Widget buildMenuItem({
+  Widget buildMenuItem(
+    BuildContext context, {
+    required NavigationItem navigationItem,
     required String text,
     required IconData icon,
     VoidCallback? onClicked,
   }) {
-    const Color color = Colors.white;
+    final NavigationProvider provider =
+        Provider.of<NavigationProvider>(context);
+    final NavigationItem currentItem = provider.navigationItem;
+    final bool isSelected = currentItem == navigationItem;
+    //const Color color = Colors.white;
+    final Color color = isSelected ? Colors.orangeAccent : Colors.white;
     const Color hoverColor = Colors.white70;
-
-    return ListTile(
-      leading: Icon(icon, color: color),
-      title: Text(text, style: const TextStyle(color: color)),
-      hoverColor: hoverColor,
-      onTap: onClicked,
+    debugPrint("buildMenuItem: $navigationItem, $currentItem, $isSelected");
+    return Material(
+      color: Colors.transparent,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(5),
+        child: ListTile(
+          selected: isSelected,
+          tileColor: Colors.green,
+          selectedTileColor: Colors.red,
+          textColor: Colors.white,
+          selectedColor: Colors.orangeAccent,
+          leading: Icon(icon, color: color),
+          title: Text(text, style: const TextStyle(fontSize: 16)),
+          hoverColor: hoverColor,
+          //onTap: onClicked,
+          onTap: () => selectItem(context, navigationItem),
+        ),
+      ),
     );
+  }
+
+  void selectItem(BuildContext context, NavigationItem item) {
+    final NavigationProvider provider =
+        Provider.of<NavigationProvider>(context, listen: false);
+
+    debugPrint(provider.navigationItem.toString());
+    provider.navigationItem = item;
+    debugPrint(provider.navigationItem.toString());
   }
 
   void selectedItem(BuildContext context, int index) {
