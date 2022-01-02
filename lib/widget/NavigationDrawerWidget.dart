@@ -182,20 +182,19 @@ class NavigationDrawerWidget extends StatelessWidget {
     debugPrint("buildMenuItem: $navigationItem, $currentItem, $isSelected");
     return Material(
       color: Colors.transparent,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(5),
-        child: ListTile(
-          selected: isSelected,
-          tileColor: Colors.green,
-          selectedTileColor: Colors.red,
-          textColor: Colors.white,
-          selectedColor: Colors.orangeAccent,
-          leading: Icon(icon, color: color),
-          title: Text(text, style: const TextStyle(fontSize: 16)),
-          hoverColor: hoverColor,
-          //onTap: onClicked,
-          onTap: () => selectItem(context, navigationItem),
-        ),
+      child: ListTile(
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+        selected: isSelected,
+        tileColor: Colors.green,
+        selectedTileColor: Colors.red,
+        textColor: Colors.white,
+        selectedColor: Colors.orangeAccent,
+        leading: Icon(icon, color: color),
+        title: Text(text, style: const TextStyle(fontSize: 16)),
+        hoverColor: hoverColor,
+        //onTap: onClicked,
+        onTap: () => selectItem(context, navigationItem),
       ),
     );
   }
