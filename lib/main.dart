@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toolbox/model/NavigationItem.dart';
-import 'package:toolbox/page/PeoplePage.dart';
+import 'package:toolbox/page/HomePage.dart';
+import 'package:toolbox/page/InfoPage.dart';
+import 'package:toolbox/page/NetworkInfoPage.dart';
+import 'package:toolbox/page/PingPage.dart';
 import 'package:toolbox/provider/NavigationProvider.dart';
 import 'package:toolbox/widget/ButtonWidget.dart';
 import 'package:toolbox/widget/NavigationDrawerWidget.dart';
@@ -57,8 +60,14 @@ class _MainPageState extends State<MainPage> {
     final NavigationItem navigationItem = provider.navigationItem;
 
     switch (navigationItem) {
-      case NavigationItem.people:
-        return const PeoplePage();
+      case NavigationItem.home:
+        return const HomePage();
+      case NavigationItem.ping:
+        return const PingPage();
+      case NavigationItem.networkInfo:
+        return const NetworkInfoPage();
+      case NavigationItem.info:
+        return const InfoPage();
       default:
         return const MyHomePage(title: 'Home');
     }

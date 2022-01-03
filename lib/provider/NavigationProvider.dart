@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:toolbox/model/NavigationItem.dart';
 
 class NavigationProvider extends ChangeNotifier {
-  NavigationItem _navigationItem = NavigationItem.people;
+  NavigationItem _navigationItem = NavigationItem.home;
 
   NavigationItem get navigationItem => _navigationItem;
 

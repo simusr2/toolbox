@@ -1,9 +1,1 @@
-enum NavigationItem {
-  header,
-  people,
-  favourites,
-  workflow,
-  updates,
-  plugins,
-  notifications,
-}
+enum NavigationItem { home, ping, info, networkInfo }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toolbox/model/NavigationItem.dart';
-import 'package:toolbox/page/FavouritesPage.dart';
-import 'package:toolbox/page/PeoplePage.dart';
+import 'package:toolbox/page/HomePage.dart';
+import 'package:toolbox/page/InfoPage.dart';
+import 'package:toolbox/page/PingPage.dart';
 import 'package:toolbox/provider/NavigationProvider.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
@@ -11,14 +12,10 @@ class NavigationDrawerWidget extends StatelessWidget {
   const NavigationDrawerWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    const double normalSizedBoxHeight = 48.0;
-    const double smallSizedBoxHeight = 16.0;
+    const double itemSeparatorSizedBoxHeight = 16.0;
     const double dividerSizedBoxHeight = 24.0;
 
-    const String name = 'Simone';
-    const String email = 'simone.com';
-    const String urlImage =
-        'https://avatars.githubusercontent.com/u/23080613?s=400&u=33f7fa84d6931941ba024cd06299ab791c774c30&v=4';
+    const String name = '🛠 Toolbox';
 
     return Drawer(
       child: Material(
@@ -26,64 +23,44 @@ class NavigationDrawerWidget extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             buildHeader(
-                urlImage: urlImage,
                 name: name,
-                email: email,
                 onClicked: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const FavouritesPage()));
+                  selectItem(context, NavigationItem.home);
+                  //Navigator.of(context).push(MaterialPageRoute(
+                  //builder: (context) => const HomePage()));
                 }),
             Container(
               padding: paddding,
               child: Column(
                 children: [
-                  const SizedBox(height: normalSizedBoxHeight),
-                  buildSearchField(),
-                  const SizedBox(height: 24),
                   buildMenuItem(
                     context,
-                    navigationItem: NavigationItem.people,
-                    text: 'People',
-                    icon: Icons.people,
-                    onClicked: () => selectedItem(context, 0),
+                    navigationItem: NavigationItem.home,
+                    text: 'Home',
+                    icon: Icons.home_outlined,
                   ),
-                  const SizedBox(height: smallSizedBoxHeight),
+                  const SizedBox(height: itemSeparatorSizedBoxHeight),
                   buildMenuItem(
                     context,
-                    navigationItem: NavigationItem.favourites,
-                    text: 'Favourites',
-                    icon: Icons.favorite_border,
-                    onClicked: () => selectedItem(context, 1),
+                    navigationItem: NavigationItem.networkInfo,
+                    text: 'Network info',
+                    icon: Icons.network_check_outlined,
                   ),
-                  const SizedBox(height: smallSizedBoxHeight),
+                  const SizedBox(height: itemSeparatorSizedBoxHeight),
                   buildMenuItem(
                     context,
-                    navigationItem: NavigationItem.workflow,
-                    text: 'Workflow',
-                    icon: Icons.workspaces_outline,
-                  ),
-                  const SizedBox(height: smallSizedBoxHeight),
-                  buildMenuItem(
-                    context,
-                    navigationItem: NavigationItem.updates,
-                    text: 'Updates',
-                    icon: Icons.update,
+                    navigationItem: NavigationItem.ping,
+                    text: 'Ping',
+                    icon: Icons.av_timer_sharp,
                   ),
                   const SizedBox(height: dividerSizedBoxHeight),
                   const Divider(color: Colors.white70),
                   const SizedBox(height: dividerSizedBoxHeight),
                   buildMenuItem(
                     context,
-                    navigationItem: NavigationItem.plugins,
-                    text: 'Plugins',
-                    icon: Icons.account_tree_outlined,
-                  ),
-                  const SizedBox(height: smallSizedBoxHeight),
-                  buildMenuItem(
-                    context,
-                    navigationItem: NavigationItem.notifications,
-                    text: 'Notifications',
-                    icon: Icons.notifications_outlined,
+                    navigationItem: NavigationItem.info,
+                    text: 'Info',
+                    icon: Icons.info_outline,
                   ),
                 ],
               ),
@@ -94,55 +71,20 @@ class NavigationDrawerWidget extends StatelessWidget {
     );
   }
 
-  Widget buildHeader(
-      {required String urlImage,
-      required String name,
-      required String email,
-      required VoidCallback onClicked}) {
+  Widget buildHeader({required String name, required VoidCallback onClicked}) {
     return InkWell(
       onTap: onClicked,
       child: Container(
-        padding: paddding.add(const EdgeInsets.symmetric(vertical: 40.0)),
-        child: Row(
-          children: <Widget>[
-            CircleAvatar(
-              radius: 30,
-              backgroundImage: NetworkImage(urlImage),
-            ),
-            const SizedBox(width: 20),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  name,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  email,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                  ),
-                ),
-              ],
-            ),
-            const Spacer(),
-            const CircleAvatar(
-              radius: 24,
-              backgroundColor: Color.fromRGBO(30, 60, 168, 1),
-              child: Icon(Icons.add_comment_outlined, color: Colors.white),
-            ),
-          ],
-        ),
-      ),
+          padding: paddding.add(const EdgeInsets.only(bottom: 15.0)),
+          child: Text(name,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.w500))),
     );
   }
 
+  // TODO create a search page/functionality
   Widget buildSearchField() {
     const Color color = Colors.white;
     return TextField(
@@ -208,22 +150,21 @@ class NavigationDrawerWidget extends StatelessWidget {
     debugPrint(provider.navigationItem.toString());
   }
 
-  void selectedItem(BuildContext context, int index) {
-    Navigator.of(context).pop();
-    switch (index) {
-      case 0:
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) =>
-              const PeoplePage(key: PageStorageKey('people-page')),
-        ));
-        break;
-      case 1:
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) =>
-              const FavouritesPage(key: PageStorageKey('favourites-page')),
-        ));
-        break;
-    }
-    //Navigator.of(context).pop();
-  }
+  // void selectedItem(BuildContext context, int index) {
+  //   Navigator.of(context).pop();
+  //   switch (index) {
+  //     case 0:
+  //       Navigator.of(context).push(MaterialPageRoute(
+  //         builder: (context) =>
+  //             const PeoplePage(key: PageStorageKey('people-page')),
+  //       ));
+  //       break;
+  //     case 1:
+  //       Navigator.of(context).push(MaterialPageRoute(
+  //         builder: (context) =>
+  //             const FavouritesPage(key: PageStorageKey('favourites-page')),
+  //       ));
+  //       break;
+  //   }
+  //Navigator.of(context).pop();
 }
