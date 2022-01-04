@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toolbox/model/NavigationItem.dart';
-import 'package:toolbox/page/HomePage.dart';
-import 'package:toolbox/page/InfoPage.dart';
-import 'package:toolbox/page/NetworkInfoPage.dart';
-import 'package:toolbox/page/PingPage.dart';
-import 'package:toolbox/provider/NavigationProvider.dart';
-import 'package:toolbox/widget/ButtonWidget.dart';
-import 'package:toolbox/widget/NavigationDrawerWidget.dart';
+import 'package:toolbox/model/navigation_item.dart';
+import 'package:toolbox/page/home_page.dart';
+import 'package:toolbox/page/info_page.dart';
+import 'package:toolbox/page/network_info_page.dart';
+import 'package:toolbox/page/ping_page.dart';
+import 'package:toolbox/provider/navigation_provider.dart';
+import 'package:toolbox/widget/button_widget.dart';
+import 'package:toolbox/widget/navigation_drawer_widget.dart';
 
 void main() {
   runApp(const MyApp());

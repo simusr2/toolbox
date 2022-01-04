@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:toolbox/implementation/DeviceInfoPlus.dart';
-import 'package:toolbox/widget/NavigationDrawerWidget.dart';
+import 'package:toolbox/implementation/device_info_plus.dart';
+import 'package:toolbox/widget/navigation_drawer_widget.dart';
 
 class InfoPage extends StatefulWidget {
   const InfoPage({Key? key}) : super(key: key);

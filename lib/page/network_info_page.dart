@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:toolbox/implementation/ConnectivityPlus.dart';
-import 'package:toolbox/implementation/DeviceInfoPlus.dart';
-import 'package:toolbox/widget/NavigationDrawerWidget.dart';
+import 'package:toolbox/implementation/connectivity_plus.dart';
+import 'package:toolbox/implementation/device_info_plus.dart';
+import 'package:toolbox/widget/navigation_drawer_widget.dart';
 
 class NetworkInfoPage extends StatefulWidget {
   const NetworkInfoPage({Key? key}) : super(key: key);

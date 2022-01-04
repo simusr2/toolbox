@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toolbox/model/NavigationItem.dart';
-import 'package:toolbox/page/HomePage.dart';
-import 'package:toolbox/page/InfoPage.dart';
-import 'package:toolbox/page/PingPage.dart';
-import 'package:toolbox/provider/NavigationProvider.dart';
+import 'package:toolbox/model/navigation_item.dart';
+import 'package:toolbox/provider/navigation_provider.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   final paddding = const EdgeInsets.symmetric(horizontal: 20.0);
