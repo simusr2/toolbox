@@ -13,7 +13,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   releases:
-    name: release apk
+    name: Build debug APK
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     env:
@@ -34,4 +34,4 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
          artifacts: "build/app/outputs/apk/debug/*.apk"
-         token: $
+         token: ${{ secrets.GITHUB_TOKEN }}
