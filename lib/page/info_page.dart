@@ -73,7 +73,7 @@ class _InfoPageState extends State<InfoPage> {
                             style:
                                 const TextStyle(fontWeight: FontWeight.bold)),
                         const Text(": "),
-                        Text(value),
+                        SelectableText(value),
                       ]),
 
                       // Text(
