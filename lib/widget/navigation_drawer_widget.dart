@@ -50,6 +50,13 @@ class NavigationDrawerWidget extends StatelessWidget {
                     text: 'Ping',
                     icon: Icons.av_timer_sharp,
                   ),
+                  const SizedBox(height: itemSeparatorSizedBoxHeight),
+                  buildMenuItem(
+                    context,
+                    navigationItem: NavigationItem.string,
+                    text: 'String',
+                    icon: Icons.text_fields,
+                  ),
                   const SizedBox(height: dividerSizedBoxHeight),
                   const Divider(color: Colors.white70),
                   const SizedBox(height: dividerSizedBoxHeight),

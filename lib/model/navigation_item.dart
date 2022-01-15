@@ -1,1 +1,1 @@
-enum NavigationItem { home, ping, info, networkInfo }
+enum NavigationItem { home, ping, info, networkInfo, string }
