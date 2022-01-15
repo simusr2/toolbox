@@ -46,13 +46,6 @@ class NavigationDrawerWidget extends StatelessWidget {
                   const SizedBox(height: itemSeparatorSizedBoxHeight),
                   buildMenuItem(
                     context,
-                    navigationItem: NavigationItem.ping,
-                    text: 'Ping',
-                    icon: Icons.av_timer_sharp,
-                  ),
-                  const SizedBox(height: itemSeparatorSizedBoxHeight),
-                  buildMenuItem(
-                    context,
                     navigationItem: NavigationItem.string,
                     text: 'String',
                     icon: Icons.text_fields,
@@ -79,7 +72,7 @@ class NavigationDrawerWidget extends StatelessWidget {
     return InkWell(
       onTap: onClicked,
       child: Container(
-          padding: paddding.add(const EdgeInsets.only(bottom: 15.0)),
+          padding: paddding.add(const EdgeInsets.only(bottom: 16.0)),
           child: Text(name,
               style: const TextStyle(
                   color: Colors.white,
