@@ -6,4 +6,6 @@ Work in progress!!!
 Toolbox app written in Flutter
 
 Flutter app:
-- Drawer
+- Network connectivity type
+- Device info
+- Base64 encode/decode
