@@ -1,6 +1,6 @@
 # toolbox
 
-[![Flutter - Build - Bundle](https://github.com/simusr2/toolbox/actions/workflows/bundle.yml/badge.svg)](https://github.com/simusr2/toolbox/actions/workflows/bundle.yml)
+[![Flutter - Build - Bundle](https://github.com/simusr2/toolbox/actions/workflows/bundle.yml/badge.svg?branch=main)](https://github.com/simusr2/toolbox/actions/workflows/bundle.yml)
 
 Work in progress!!!
 
