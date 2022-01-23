@@ -5,7 +5,8 @@ import 'package:toolbox/page/home_page.dart';
 import 'package:toolbox/page/info_page.dart';
 import 'package:toolbox/page/network_info_page.dart';
 import 'package:toolbox/page/ping_page.dart';
-import 'package:toolbox/page/string_page.dart';
+import 'package:toolbox/page/string_base64_page.dart';
+import 'package:toolbox/page/string_length_page.dart';
 import 'package:toolbox/provider/navigation_provider.dart';
 import 'package:toolbox/widget/button_widget.dart';
 import 'package:toolbox/widget/navigation_drawer_widget.dart';
@@ -69,9 +70,10 @@ class _MainPageState extends State<MainPage> {
         return const NetworkInfoPage();
       case NavigationItem.info:
         return const InfoPage();
-      case NavigationItem.string:
-        return const StringPage();
-
+      case NavigationItem.stringBase64:
+        return const StringBase64Page();
+      case NavigationItem.stringLength:
+        return const StringLengthPage();
       default:
         return const MyHomePage(title: 'Home');
     }

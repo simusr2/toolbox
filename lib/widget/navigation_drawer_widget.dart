@@ -9,9 +9,7 @@ class NavigationDrawerWidget extends StatelessWidget {
   const NavigationDrawerWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    const double itemSeparatorSizedBoxHeight = 16.0;
-    const double dividerSizedBoxHeight = 24.0;
-
+    const double itemSeparatorSizedBoxHeight = 8.0;
     const String name = '🛠 Toolbox';
 
     return Drawer(
@@ -23,8 +21,6 @@ class NavigationDrawerWidget extends StatelessWidget {
                 name: name,
                 onClicked: () {
                   selectItem(context, NavigationItem.home);
-                  //Navigator.of(context).push(MaterialPageRoute(
-                  //builder: (context) => const HomePage()));
                 }),
             Container(
               padding: paddding,
@@ -43,16 +39,21 @@ class NavigationDrawerWidget extends StatelessWidget {
                     text: 'Network info',
                     icon: Icons.network_check_outlined,
                   ),
+                  const Divider(color: Colors.white70),
+                  buildMenuItem(
+                    context,
+                    navigationItem: NavigationItem.stringBase64,
+                    text: 'String - Base64',
+                    icon: Icons.text_format,
+                  ),
                   const SizedBox(height: itemSeparatorSizedBoxHeight),
                   buildMenuItem(
                     context,
-                    navigationItem: NavigationItem.string,
-                    text: 'String',
+                    navigationItem: NavigationItem.stringLength,
+                    text: 'String - Length',
                     icon: Icons.text_fields,
                   ),
-                  const SizedBox(height: dividerSizedBoxHeight),
                   const Divider(color: Colors.white70),
-                  const SizedBox(height: dividerSizedBoxHeight),
                   buildMenuItem(
                     context,
                     navigationItem: NavigationItem.info,
@@ -115,10 +116,8 @@ class NavigationDrawerWidget extends StatelessWidget {
         Provider.of<NavigationProvider>(context);
     final NavigationItem currentItem = provider.navigationItem;
     final bool isSelected = currentItem == navigationItem;
-    //const Color color = Colors.white;
-    final Color color = isSelected ? Colors.orangeAccent : Colors.white;
+    const Color color = Colors.white;
     const Color hoverColor = Colors.white70;
-    debugPrint("buildMenuItem: $navigationItem, $currentItem, $isSelected");
     return Material(
       color: Colors.transparent,
       child: ListTile(
@@ -126,9 +125,9 @@ class NavigationDrawerWidget extends StatelessWidget {
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         selected: isSelected,
         tileColor: Colors.green,
-        selectedTileColor: Colors.red,
+        selectedTileColor: Colors.red[600],
         textColor: Colors.white,
-        selectedColor: Colors.orangeAccent,
+        selectedColor: Colors.white,
         leading: Icon(icon, color: color),
         title: Text(text, style: const TextStyle(fontSize: 16)),
         hoverColor: hoverColor,
@@ -142,26 +141,6 @@ class NavigationDrawerWidget extends StatelessWidget {
     final NavigationProvider provider =
         Provider.of<NavigationProvider>(context, listen: false);
 
-    debugPrint(provider.navigationItem.toString());
     provider.navigationItem = item;
-    debugPrint(provider.navigationItem.toString());
   }
-
-  // void selectedItem(BuildContext context, int index) {
-  //   Navigator.of(context).pop();
-  //   switch (index) {
-  //     case 0:
-  //       Navigator.of(context).push(MaterialPageRoute(
-  //         builder: (context) =>
-  //             const PeoplePage(key: PageStorageKey('people-page')),
-  //       ));
-  //       break;
-  //     case 1:
-  //       Navigator.of(context).push(MaterialPageRoute(
-  //         builder: (context) =>
-  //             const FavouritesPage(key: PageStorageKey('favourites-page')),
-  //       ));
-  //       break;
-  //   }
-  //Navigator.of(context).pop();
 }
