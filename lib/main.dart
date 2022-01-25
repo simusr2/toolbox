@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         return NavigationProvider();
       },
       child: MaterialApp(
-          title: 'Flutter Demo',
+          title: 'Toolbox',
           theme: ThemeData(
             // This is the theme of your application.
             //
