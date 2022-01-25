@@ -39,6 +39,7 @@ dependencies:
   device_info_plus: ^3.2.1
   connectivity_plus: ^2.2.0
   dart_ipify: ^1.1.1
+  internet_speed_test: ^1.5.0
 
 dev_dependencies:
   flutter_test:
