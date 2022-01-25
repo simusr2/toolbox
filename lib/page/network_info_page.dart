@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:toolbox/implementation/connectivity_plus.dart';
-import 'package:toolbox/implementation/device_info_plus.dart';
+import 'package:toolbox/implementation/ipify.dart';
 import 'package:toolbox/widget/navigation_drawer_widget.dart';
 
 class NetworkInfoPage extends StatefulWidget {
@@ -16,12 +16,13 @@ class NetworkInfoPage extends StatefulWidget {
 class _NetworkInfoPageState extends State<NetworkInfoPage> {
   String _connectionStatus = 'Unknown';
   StreamSubscription<ConnectivityResult>? _connectivityListener;
+  String _ipv4 = '';
+  String _ipv6 = '';
+
 
   @override
   initState() {
     super.initState();
-
-    getDeviceInfoMap();
 
     getConnectionStatus().then((ConnectivityResult connectionStatus) {
       setState(() {
@@ -34,6 +35,19 @@ class _NetworkInfoPageState extends State<NetworkInfoPage> {
             _connectionStatus = getConnectionStatusString(result);
           })
         });
+
+    getIpv64().then((value) => {
+      setState((){
+        _ipv6 = value;
+      })
+    });
+
+
+    getIpv4().then((value) => {
+      setState((){
+        _ipv4 = value;
+      })
+    });
   }
 
   @override
@@ -59,6 +73,8 @@ class _NetworkInfoPageState extends State<NetworkInfoPage> {
           children: [
             const Text('Network info'),
             Text('Connection status: $_connectionStatus'),
+            SelectableText('Public IPv4: $_ipv4'),
+            SelectableText('Public IPv4/IPv6: $_ipv6'),
           ],
         ),
       ),
