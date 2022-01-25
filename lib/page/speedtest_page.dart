@@ -32,25 +32,33 @@ class _SpeedtestPageState extends State<SpeedtestPage> {
 
         internetSpeedTest.startUploadTesting(onDone: (double transferRate, SpeedUnit unit) {
               // TODO: Change UI
+setState((){
               _speedtestStatus =
               'Test done. Results: DOWN $_downloadRate $_downloadUnit. UP $transferRate $unit.';
-            },
+           }
+ },
             onProgress: (double percent, double transferRate, SpeedUnit unit) {
           // TODO: Change UI
+setState((){
           _speedtestStatus = 'Upload test results: $_downloadRate $_downloadUnit. Upload test: current value: $transferRate $unit.';
-        }, onError: (String errorMessage, String speedTestError) {
+        }
+}, onError: (String errorMessage, String speedTestError) {
           // TODO: Show toast error
+setState((){
           _speedtestStatus = 'Upload test error: $errorMessage. $speedTestError';
-        });
+     }
+   });
       },
       onProgress: (double percent, double transferRate, SpeedUnit unit) {
         // TODO: Change UI
+setState((){
         _speedtestStatus = 'Download test: $percent %. Current value: $transferRate $unit.';
-      },
+  }    },
       onError: (String errorMessage, String speedTestError) {
         // TODO: Show toast error
+setState((){
         _speedtestStatus = 'Download test error: $errorMessage. $speedTestError';
-      },
+    }  },
     );
   }
 
