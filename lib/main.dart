@@ -69,8 +69,8 @@ class _MainPageState extends State<MainPage> {
         return const PingPage();
       case NavigationItem.networkInfo:
         return const NetworkInfoPage();
-      case NavigationItem.speedtest:
-        return const SpeedtestPage();
+      // case NavigationItem.speedtest:
+      //   return const SpeedtestPage();
       case NavigationItem.info:
         return const InfoPage();
       case NavigationItem.stringBase64:

@@ -3,7 +3,7 @@ enum NavigationItem {
   ping,
   info,
   networkInfo,
-  speedtest,
+  //speedtest,
   stringBase64,
   stringLength
 }

@@ -39,13 +39,13 @@ class NavigationDrawerWidget extends StatelessWidget {
                     text: 'Network info',
                     icon: Icons.network_check_outlined,
                   ),
-                  const SizedBox(height: itemSeparatorSizedBoxHeight),
-                  buildMenuItem(
-                    context,
-                    navigationItem: NavigationItem.speedtest,
-                    text: 'Speedtest',
-                    icon: Icons.downloading,
-                  ),
+                  // const SizedBox(height: itemSeparatorSizedBoxHeight),
+                  // buildMenuItem(
+                  //   context,
+                  //   navigationItem: NavigationItem.speedtest,
+                  //   text: 'Speedtest',
+                  //   icon: Icons.downloading,
+                  // ),
                   const Divider(color: Colors.white70),
                   buildMenuItem(
                     context,
