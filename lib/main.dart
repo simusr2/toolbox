@@ -5,6 +5,7 @@ import 'package:toolbox/page/home_page.dart';
 import 'package:toolbox/page/info_page.dart';
 import 'package:toolbox/page/network_info_page.dart';
 import 'package:toolbox/page/ping_page.dart';
+import 'package:toolbox/page/price_per_kg_page.dart';
 import 'package:toolbox/page/speedtest_page.dart';
 import 'package:toolbox/page/string_base64_page.dart';
 import 'package:toolbox/page/string_length_page.dart';
@@ -77,6 +78,8 @@ class _MainPageState extends State<MainPage> {
         return const StringBase64Page();
       case NavigationItem.stringLength:
         return const StringLengthPage();
+      case NavigationItem.pricePerKg:
+        return const PricePerKgPage();
       default:
         return const MyHomePage(title: 'Home');
     }

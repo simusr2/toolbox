@@ -5,5 +5,6 @@ enum NavigationItem {
   networkInfo,
   //speedtest,
   stringBase64,
-  stringLength
+  stringLength,
+  pricePerKg
 }

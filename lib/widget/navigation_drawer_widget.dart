@@ -63,6 +63,13 @@ class NavigationDrawerWidget extends StatelessWidget {
                   const Divider(color: Colors.white70),
                   buildMenuItem(
                     context,
+                    navigationItem: NavigationItem.pricePerKg,
+                    text: 'Price per Kg',
+                    icon: Icons.euro,
+                  ),
+                  const Divider(color: Colors.white70),
+                  buildMenuItem(
+                    context,
                     navigationItem: NavigationItem.info,
                     text: 'Info',
                     icon: Icons.info_outline,
