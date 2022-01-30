@@ -54,6 +54,7 @@ class _PricePerKgPageState extends State<PricePerKgPage> {
         title: const Text('Price per KG'),
         centerTitle: true,
         backgroundColor: Colors.blueGrey,
+        shadowColor: Colors.blueGrey,
       ),
       body: SingleChildScrollView(
         child: Center(

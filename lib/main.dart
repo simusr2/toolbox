@@ -6,7 +6,6 @@ import 'package:toolbox/page/info_page.dart';
 import 'package:toolbox/page/network_info_page.dart';
 import 'package:toolbox/page/ping_page.dart';
 import 'package:toolbox/page/price_per_kg_page.dart';
-import 'package:toolbox/page/speedtest_page.dart';
 import 'package:toolbox/page/string_base64_page.dart';
 import 'package:toolbox/page/string_length_page.dart';
 import 'package:toolbox/provider/navigation_provider.dart';
@@ -41,7 +40,6 @@ class MyApp extends StatelessWidget {
             // is not restarted.
             primarySwatch: Colors.blue,
           ),
-          //home: const MyHomePage(title: 'Flutter Demo Home Page'),
           home: const MainPage()),
     );
   }
