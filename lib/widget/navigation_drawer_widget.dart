@@ -49,13 +49,6 @@ class NavigationDrawerWidget extends StatelessWidget {
                   const Divider(color: Colors.white70),
                   buildMenuItem(
                     context,
-                    navigationItem: NavigationItem.fileBase64,
-                    text: 'File - Base64',
-                    icon: Icons.file_download,
-                  ),
-                  const Divider(color: Colors.white70),
-                  buildMenuItem(
-                    context,
                     navigationItem: NavigationItem.stringBase64,
                     text: 'String - Base64',
                     icon: Icons.text_format,

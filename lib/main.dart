@@ -12,8 +12,6 @@ import 'package:toolbox/provider/navigation_provider.dart';
 import 'package:toolbox/widget/button_widget.dart';
 import 'package:toolbox/widget/navigation_drawer_widget.dart';
 
-import 'page/file_base64_page.dart';
-
 void main() {
   runApp(const MyApp());
 }
@@ -74,8 +72,6 @@ class _MainPageState extends State<MainPage> {
       //   return const SpeedtestPage();
       case NavigationItem.info:
         return const InfoPage();
-      case NavigationItem.fileBase64:
-        return const FileBase64Page();
       case NavigationItem.stringBase64:
         return const StringBase64Page();
       case NavigationItem.stringLength:

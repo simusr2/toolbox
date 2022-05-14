@@ -6,6 +6,5 @@ enum NavigationItem {
   //speedtest,
   stringBase64,
   stringLength,
-  pricePerKg,
-  fileBase64
+  pricePerKg
 }

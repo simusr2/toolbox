@@ -40,7 +40,6 @@ dependencies:
   connectivity_plus: ^2.2.0
   dart_ipify: ^1.1.1
   internet_speed_test: ^1.5.0
-  flutter_downloader: ^1.7.2
 
 dev_dependencies:
   flutter_test:
