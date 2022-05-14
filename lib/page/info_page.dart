@@ -47,7 +47,7 @@ class _InfoPageState extends State<InfoPage> {
                   color: Colors.black,
                   fontWeight: FontWeight.bold),
             ),
-            const Text("Version: 1.0.0"),
+            const Text("Version: 1.0.1"),
             Text("Device: ${getPlatformString()}"),
             const Divider(height: 10),
             const Text("Device Info",

@@ -16,6 +16,7 @@ class NavigationDrawerWidget extends StatelessWidget {
       child: Material(
         color: const Color.fromRGBO(50, 75, 205, 1),
         child: ListView(
+          padding: const EdgeInsets.only(top: 10.0),
           children: <Widget>[
             buildHeader(
                 name: name,
